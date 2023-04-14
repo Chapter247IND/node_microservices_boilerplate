@@ -1,0 +1,48 @@
+http:
+  port: 8080
+admin:
+  port: 9876
+  host: localhost
+apiEndpoints:
+  product:
+    host: localhost
+    paths:
+      - "/v1/product"
+      - "/v1/product/*"
+  auth:
+    host: localhost
+    paths:
+      - "/v1/auth"
+      - "/v1/auth/*"
+serviceEndpoints:
+  auth:
+    url: "http://localhost:5001"
+  product:
+    url: "http://localhost:5002"
+policies:
+  - basic-auth
+  - cors
+  - expression
+  - key-auth
+  - log
+  - oauth2
+  - proxy
+  - rate-limit
+
+pipelines:
+  product:
+    apiEndpoints:
+      - product
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: product
+              changeOrigin: true
+  auth:
+    apiEndpoints:
+      - auth
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: auth
+              changeOrigin: true
