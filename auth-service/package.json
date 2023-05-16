@@ -6,9 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env NODE_ENV=development nodemon index.js",
-    "start": "cross-env NODE_ENV=production node index.js"
+    "start": "cross-env NODE_ENV=production node index.js",
+    "lint": "eslint ./",
+    "lint-fix": "eslint --fix .  --ext .js"
   },
-  "keywords": [],
+  "keywords": [ ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -17,6 +19,8 @@
     "express-jsdoc-swagger": "^1.8.0"
   },
   "devDependencies": {
+    "eslint": "^8.40.0",
+    "eslint-plugin-react": "^7.32.2",
     "nodemon": "^2.0.20"
   }
 }
