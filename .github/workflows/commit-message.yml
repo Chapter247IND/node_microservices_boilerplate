@@ -1,0 +1,8 @@
+name: 'Commit Message Check'
+on:
+  push:
+    branches-ignore:
+      - "renovate/**"
+jobs:
+  check-semantic-commit:
+    uses: Chapter247IND/shared-workflow/blob/main/.github/workflows/commit-message.yml@main
